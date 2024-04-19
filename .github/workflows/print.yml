@@ -1,0 +1,14 @@
+name: Print
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    image: ubuntu-latest
+
+    steps:
+      - name: Print code
+        run: bash run.sh
