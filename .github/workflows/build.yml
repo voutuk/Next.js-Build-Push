@@ -20,12 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./app
 
       - name: Build Next.js app
         run: npm run build
+        working-directory: ./app
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          path: build
+          path: ./app/build
