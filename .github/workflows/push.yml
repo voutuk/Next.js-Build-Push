@@ -11,13 +11,19 @@ jobs:
       - name: Download artifact site
         uses: actions/download-artifact@v4.1.5
         with:
-          name: Site-FILES
+          name: github-pages
+          github-token: ${{ secrets.GIT_KEY }}
+          repository: actions/toolkit
+          run-id: 0001
           path: distfiles
 
-      - name: Download artifact ip
+      - name: Download artifact public_ip
         uses: actions/download-artifact@v4.1.5
         with:
           name: public_ip
+          github-token: ${{ secrets.GIT_KEY }}
+          repository: actions/toolkit
+          run-id: 0002
           path: .
 
       - name: Get Public IP
