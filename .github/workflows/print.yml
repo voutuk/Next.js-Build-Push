@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print code
+      - uses: actions/checkout@v2
+      - name: Run script file
         run: |
-          ls -la
-          chmod +x ${GITHUB_WORKSPACE}/run.sh
-          ${GITHUB_WORKSPACE}/run.sh
+          chmod +x ./run.sh
+          ./run.sh
         shell: bash
