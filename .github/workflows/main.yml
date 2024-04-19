@@ -34,7 +34,7 @@ jobs:
         working-directory: ./app
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           name: github-pages
           path: ./app/out
@@ -44,6 +44,7 @@ jobs:
         with:
           name: Site-FILES
           path: ./app/out
+          overwrite: true
     
   Git-Pages:
     name: Deploy to GitHub Pages
