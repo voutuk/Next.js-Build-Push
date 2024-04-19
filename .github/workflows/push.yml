@@ -1,0 +1,25 @@
+name: Upload to AWS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Upload:
+    name: Upload file to AWS EC2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload file to AWS EC2
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: distfiles
+
+      - name: Upload file to AWS EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "tests/a.txt,tests/b.txt"
+          target: your_server_target_folder_path

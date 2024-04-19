@@ -1,0 +1,33 @@
+name: Create EC2 Instance Terraform
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create:
+    name: Create EC2 Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+      
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./terraform
+
+      - name: Terraform Plan
+        run: terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -auto-approve 
+        working-directory: ./terraform
+
+      - name: Terraform Apply
+        run: terraform apply -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -auto-approve 
+        working-directory: ./terraform
+
+      - name: Get Public IP
+        run: echo "$(terraform output -raw instance_public_ip)" >> public_ip.txt
+        working-directory: ./terraform
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.3.2
+        with:
+          path: ./terraform/public_ip.txt
