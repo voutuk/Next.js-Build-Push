@@ -23,7 +23,7 @@ jobs:
         working-directory: ./app
 
       - name: Build Next.js app
-        run: npm run build
+        run: npm run export
         working-directory: ./app
 
       - name: Save build artifacts
