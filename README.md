@@ -5,16 +5,18 @@
 Edit next.config.js:
 
 ```js
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
-})
+const withNextra = require("nextra")({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.tsx",
+});
 module.exports = {
   ...withNextra(),
   images: {
-    unoptimized: true,
+    unoptimized: true, //Fix eror
   },
+  assetPrefix: ".", //Normal path
 };
+
 ```
 
 Edit package.json:
