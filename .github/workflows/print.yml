@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    image: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Print code
