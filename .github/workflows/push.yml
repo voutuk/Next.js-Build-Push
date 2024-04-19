@@ -11,7 +11,7 @@ jobs:
       - name: Download artifact site
         uses: actions/download-artifact@v4
         with:
-          name: github-pages
+          name: Site-FILES
           path: distfiles
 
       - name: Download artifact ip

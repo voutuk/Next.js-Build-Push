@@ -38,6 +38,12 @@ jobs:
         with:
           name: github-pages
           path: ./app/out
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.3.2
+        with:
+          name: Site-FILES
+          path: ./app/out
     
   Git-Pages:
     name: Deploy to GitHub Pages
