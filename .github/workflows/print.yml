@@ -6,9 +6,13 @@ on:
       - main
 
 jobs:
-  build:
+  print:
     runs-on: ubuntu-latest
 
     steps:
       - name: Print code
-        run: bash run.sh
+        run: |
+          ls -la
+          chmod +x ./run.sh
+          ./run.sh
+        shell: bash
