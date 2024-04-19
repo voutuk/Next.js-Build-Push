@@ -1,4 +1,4 @@
-name: Upload to AWS
+name: Upload File to AWS
 
 on:
   workflow_dispatch:
