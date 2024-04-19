@@ -13,7 +13,7 @@ jobs:
         with:
           name: github-pages
           github-token: ${{ secrets.GIT_KEY }}
-          repository: actions/toolkit
+          repository: voutuk/Next.js-Build-Push
           run-id: 0001
           path: distfiles
 
@@ -22,7 +22,7 @@ jobs:
         with:
           name: public_ip
           github-token: ${{ secrets.GIT_KEY }}
-          repository: actions/toolkit
+          repository: voutuk/Next.js-Build-Push
           run-id: 0002
           path: .
 
