@@ -1,5 +1,29 @@
 # bash-test
 
-[Додайте парамент export для компілювання html](https://nextjs.org/docs/app/building-your-application/deploying/static-exports#configuration)
-
 [Про експорт](https://nextjs.org/docs/pages/building-your-application/deploying)
+
+Edit next.config.js:
+
+```js
+const withNextra = require('nextra')({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.tsx',
+})
+module.exports = {
+  ...withNextra(),
+  images: {
+    unoptimized: true,
+  },
+};
+```
+
+Edit package.json:
+
+```js
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export"
+  },
+```
