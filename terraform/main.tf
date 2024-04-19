@@ -37,23 +37,23 @@ resource "aws_instance" "AWS-3" {
   tags = { 
     Name = "APACHE-UB-3"
   }
-#   provisioner "file" {                               # OFF SLOW
-#     source      = "${path.module}/script.sh"
-#     destination = "/tmp/script.sh"
-#   }
-#   provisioner "remote-exec" {
-#     inline = [
-#       "chmod +x /tmp/script.sh",
-#       "sudo bash /tmp/script.sh",
-#     ]
-#   }
-#   connection {
-#     type        = "ssh"
-#     user        = "ubuntu"
-#     password    = ""
-#     private_key = file("${path.module}/BublikKEY.pem")
-#     host        = self.public_ip
-#   }
+  provisioner "file" {                               # OFF SLOW
+    source      = "${path.module}/script.sh"
+    destination = "/tmp/script.sh"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/script.sh",
+      "sudo bash /tmp/script.sh",
+    ]
+  }
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    password    = ""
+    private_key = file("${path.module}/BublikKEY.pem")
+    host        = self.public_ip
+  }
 }
 
 
