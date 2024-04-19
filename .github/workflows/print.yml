@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run script file
+      - name: Print
         run: |
           chmod +x ./run.sh
           ./run.sh
