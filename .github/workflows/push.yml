@@ -8,18 +8,27 @@ jobs:
     name: Upload file to AWS EC2
     runs-on: ubuntu-latest
     steps:
-      - name: Upload file to AWS EC2
+      - name: Download artifact site
         uses: actions/download-artifact@v4
         with:
           name: github-pages
           path: distfiles
 
+      - name: Download artifact ip
+        uses: actions/download-artifact@v4
+        with:
+          name: public_ip
+          path: .
+
+      - name: Get Public IP
+        run: echo "HOST=$(cat public_ip.txt)" >> $GITHUB_ENV
+
       - name: Upload file to AWS EC2
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          source: "tests/a.txt,tests/b.txt"
-          target: your_server_target_folder_path
+          host: ${{ env.HOST }}
+          username: "ubuntu"
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: distfiles/
+          target: /var/www/html/
