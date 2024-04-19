@@ -35,34 +35,30 @@ jobs:
       - name: Save build artifacts
         uses: actions/upload-artifact@v4.3.2
         with:
-          name: build-artifacts
+          name: next-static
           path: ./app/out
     
   Git-Pages:
     name: Deploy to GitHub Pages
     needs: Build
     environment:
-      name: build-artifacts
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4.1.5
+        with:
+          name: next-static
+          path: ./app
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./app
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          site: ./app
-          target_branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./app
-          keep_files: false
-          clean: true
-          commit_message: "Deployed to GitHub Pages"
-          commit_user_name: "GitHub Actions"
-          commit_user_email: "voutuk@icloud.com"
