@@ -55,6 +55,7 @@ jobs:
         with:
           name: next-static
           path: ./app
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -62,3 +63,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+  
+  Push-EC2:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Step 1
+        run: echo "This is a manual job"
+
+
