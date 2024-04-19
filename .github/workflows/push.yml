@@ -9,12 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact public_ip
-        uses: actions/download-artifact@v4.1.5
+        uses: actions/download-artifact@v4
         with:
           name: public_ip
-          github-token: ${{ secrets.GIT_KEY }}
-          repository: voutuk/Next.js-Build-Push
-          run-id: 0002
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
           path: .
 
       - name: Download artifact site
