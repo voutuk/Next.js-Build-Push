@@ -11,7 +11,7 @@ jobs:
       - name: Download artifact public_ip
         uses: actions/download-artifact@v4
         with:
-          name: public_ip
+          name: build-artifacts
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
           path: .
