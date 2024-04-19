@@ -19,7 +19,7 @@ jobs:
         working-directory: ./terraform
 
       - name: Terraform Apply
-        run: terraform apply -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -auto-approve 
+        run: terraform apply -var="aws_acces=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -auto-approve 
         working-directory: ./terraform
 
       - name: Get Public IP

@@ -37,7 +37,7 @@ resource "aws_instance" "AWS-3" {
   tags = { 
     Name = "APACHE-UB-3"
   }
-#   provisioner "file" {                               # VERY SLOW
+#   provisioner "file" {                               # OFF SLOW
 #     source      = "${path.module}/script.sh"
 #     destination = "/tmp/script.sh"
 #   }
